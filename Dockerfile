@@ -16,6 +16,8 @@ COPY run-java.sh /app/run-java.sh
 
 RUN chmod +x run-java.sh
 
+RUN sed -i -e 's/\r$//' run-java.sh
+
 CMD ["tail", "-f", "/dev/null"]
 
 
