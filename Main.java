@@ -50,8 +50,6 @@ public class Main {
     }
   }
 
-  // METHODS
-
   static void displayMenu() {
     System.out.println("----------------------------");
     System.out.println("0. Create a database (compulsory for the first time, do not use if database was created previously)");
@@ -83,8 +81,6 @@ public class Main {
 
         System.out.println("Default database created.");
   }
-
-  // DATA BASE OPERATIONS
   
   private static void createRecord(Connection connection, Scanner scanner) throws SQLException {
     System.out.print("Enter name: ");

@@ -2,7 +2,7 @@ version: "3"
 services:
   db:
     image: mysql:latest
-    container_name: mydb
+    container_name: mysql
     environment:
       - MYSQL_ROOT_PASSWORD=pass123
       - MYSQL_DATABASE=mysqldb
@@ -13,16 +13,27 @@ services:
     networks:
       Bridge-Zadanie-1:
         ipv4_address: 10.0.10.3
+  phpAdmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+      - PMA_USER=wchuchro
+      - PMA_PASSWORD=pass123
+    ports:
+      - 8080:80
+    networks:
+      Bridge-Zadanie-1:
+        ipv4_address: 10.0.10.4
   javaapp:
     image: java-app
     container_name: myjava
     build:
       context: ./
-      dockerfile: Dockerfile
     networks:
       Bridge-Zadanie-1:
-        ipv4_address: 10.0.10.4
-
+        ipv4_address: 10.0.10.5
 networks:
   Bridge-Zadanie-1:
     driver: bridge
